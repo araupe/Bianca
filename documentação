@@ -1,0 +1,79 @@
+O código apresentado pode ser dividido em duas partes principais: uma relacionada ao desenvolvimento de uma aplicação web simples usando Flask e outra ao uso do Selenium para automação de um navegador web. Vamos analisar o raciocínio por trás de cada parte.
+Parte 1: Aplicação Flask
+
+1. Importação do Flask:
+
+python
+
+from flask import Flask, request, jsonify
+
+Aqui, são importados os componentes necessários do microframework Flask. Flask é utilizado para criar a instância da aplicação, request para manipular requisições (não usado explicitamente no código apresentado), e jsonify para retornar respostas JSON (também não usado).
+
+2. Criação da aplicação Flask:
+
+python
+
+app = Flask(__name__)
+
+Esta linha cria uma nova instância do aplicativo Flask, onde __name__ é uma variável do Python que fornece o nome do módulo em que o script é executado. Isso é essencial para que o Flask saiba onde procurar por templates, arquivos estáticos, etc.
+
+3. Definição de rota e função de visualização:
+
+python
+
+@app.route("/")
+def home():
+    return "Home"
+
+Aqui, um decorador @app.route() é usado para especificar a URL na qual a função home() será acessível. Neste caso, a função home() está associada à raiz do site ("/"). Quando essa rota é acessada, simplesmente retorna a string "Home".
+
+4. Execução do aplicativo:
+
+python
+
+if __name__ == "__main__":
+    app.run(debug=True)
+
+Este bloco condicional verifica se o script é o módulo principal executado (__main__). Se for, ele chama app.run(), que inicia o servidor de desenvolvimento Flask. O parâmetro debug=True ativa o modo de depuração, que ajuda no desenvolvimento ao proporcionar recargas automáticas e mensagens de erro detalhadas.
+Parte 2: Automação com Selenium
+
+1. Instalação do Selenium:
+
+python
+
+pip install selenium
+
+Este comando instala a biblioteca Selenium, que é utilizada para automatizar ações em navegadores web.
+
+2. Importação de componentes Selenium:
+
+python
+
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
+
+Estas linhas importam os componentes necessários do Selenium para interagir com o navegador Chrome e localizar elementos na página web.
+
+3. Configuração do driver do Chrome:
+
+python
+
+service = Service()
+options = webdriver.ChromeOptions()
+driver = webdriver.Chrome(service=service, options=options)
+
+Aqui, é criado um objeto Service() que gerencia o serviço do navegador. ChromeOptions() é uma classe para gerenciar opções específicas do navegador Chrome. webdriver.Chrome inicializa uma sessão do Chrome com as opções especificadas.
+
+4. Navegação e interação com o site:
+
+python
+
+url = 'http://www.bianca.com/'
+driver.get(url)
+driver.find_element(By.TAG_NAME, 'h1').text
+
+Nestas linhas, o Selenium é usado para abrir o URL especificado. Em seguida, ele procura pelo primeiro elemento <h1> na página e obtém o texto desse elemento.
+
+Após o desenvolvimento da API, a mesma seria hosteada em araupe.pythonanywhere.com, porém devido a falta de dominio sobre o tema de desenvolvimento de API de webscraping, foi necessário pesquisar como fazer a atividade, através de vídeos, fóruns e documentações,
+e pelo tempo não foi possível finalizar a API e disponibilizá-la através do link. Acredito que foi possível iniciar a atividade e com um tempo maior para a realização seria possível entregar uma API funcional!
